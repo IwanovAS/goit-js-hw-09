@@ -16,3 +16,62 @@ img {
   display: block;
   max-width: 100%;
 }
+
+/* My styles for timer*/
+
+body,
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.timer {
+  display: flex;
+  margin-top: 20px;
+}
+
+.field {
+  text-align: center;
+  margin: 0 10px;
+}
+
+.value {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+#datetime-picker {
+  padding: 8px;
+  font-size: 16px;
+}
+
+[data-start] {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+[data-start]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
