@@ -3,12 +3,14 @@ import flatpickr from "flatpickr";
 import Notiflix from "notiflix";
 
 const startButton = document.querySelector("[data-start]");
+const datePicker = document.querySelector("#datetime-picker");
 const daysValue = document.querySelector("[data-days]");
 const hoursValue = document.querySelector("[data-hours]");
 const minutesValue = document.querySelector("[data-minutes]");
 const secondsValue = document.querySelector("[data-seconds]");
 
 let countdownInterval;
+let targetDateTimestamp = null;
 
 const convertMs = (ms) => {
   const second = 1000;
@@ -25,8 +27,6 @@ const convertMs = (ms) => {
 };
 
 const addLeadingZero = (value) => value.toString().padStart(2, "0");
-
-let targetDateTimestamp = null;
 
 const updateTimer = () => {
   const currentDate = new Date().getTime();
@@ -72,4 +72,12 @@ flatpickr("#datetime-picker", {
 startButton.addEventListener("click", () => {
   clearInterval(countdownInterval);
   countdownInterval = setInterval(updateTimer, 1000);
+  startButton.disabled = true;
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const selectedDate = datePicker._flatpickr.selectedDates[0];
+  if (!selectedDate || selectedDate <= new Date()) {
+    startButton.disabled = true;
+  }
 });
